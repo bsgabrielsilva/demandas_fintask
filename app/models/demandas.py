@@ -21,3 +21,5 @@ class Demandas(TimestampsAbstract, models.Model):
 
     class Meta:
         app_label = 'app'
+        verbose_name = 'Demandas'
+        verbose_name_plural = 'Demandas de Peças'

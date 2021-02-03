@@ -14,3 +14,6 @@ class Cidades(TimestampsAbstract, models.Model):
 
     class Meta:
         app_label = 'app'
+        verbose_name = 'Cidades'
+        verbose_name_plural = 'Cidades'
+
