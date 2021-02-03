@@ -1,0 +1,19 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$150000$iaOQJcdxtjzN$h6HUSwOX0eL2KPpbB4h03lUAYtXqKVZ9QuLkFeXCTHY=",
+      "last_login": null,
+      "is_superuser": true, 
+      "username": "bsgabrielsilva",
+      "first_name": "Gabriel", "last_name": "Silva",
+      "email": "martinsgpgabriel@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2021-02-03T13:48:27.233Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]
