@@ -1,3 +1,3 @@
 from .cidades_serializer import CidadesSerializer
-from .demandas_serializer import DemandasSerializer
+from .demandas_serializer import DemandasCreateUpdateSerializer, DemandasListSerializer
 from .user_serializer import UserSerializer
