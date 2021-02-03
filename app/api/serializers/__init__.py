@@ -1,1 +1,2 @@
 from .cidades_serializer import CidadesSerializer
+from .demandas_serializer import DemandasSerializer
