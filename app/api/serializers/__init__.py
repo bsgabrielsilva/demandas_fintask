@@ -1,0 +1,1 @@
+from .cidades_serializer import CidadesSerializer
