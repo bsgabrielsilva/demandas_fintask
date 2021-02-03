@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Copy .env-test to .env"
+cp .env-test .env
+
 # Apply database migrations
 echo "Apply database migrations"
 python manage.py migrate
