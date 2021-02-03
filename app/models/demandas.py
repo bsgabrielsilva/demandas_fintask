@@ -19,6 +19,9 @@ class Demandas(TimestampsAbstract, models.Model):
     cidade = models.ForeignKey('app.Cidades', on_delete=models.PROTECT, related_name='demandas')
     user = models.ForeignKey('auth.User', on_delete=models.PROTECT, related_name='demandas')
 
+    def __str__(self):
+        return self.descricao
+
     class Meta:
         app_label = 'app'
         verbose_name = 'Demandas'

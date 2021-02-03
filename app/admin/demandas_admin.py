@@ -13,8 +13,11 @@ class DemandasAdmin(admin.ModelAdmin):
             ("status",),
         )}),
         ("Endereço", {"fields": (
-            ("logradouro", "complemento"),
-            ("bairro", "cep", "cidade")
+            ("logradouro", ),
+            ("complemento", ),
+            ("bairro", ),
+            ("cep", ),
+            ("cidade", )
         )}),
         ("Informações de contato", {"fields": (
             ("email", "telefone", "celular")
