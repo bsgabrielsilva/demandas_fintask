@@ -9,6 +9,7 @@ from .viewsets import *
 router = routers.DefaultRouter()
 router.register(r'cidades', CidadesViewSet, basename='cidades')
 router.register(r'demandas', DemandasViewSet, basename='demandas')
+router.register(r'finalizar_demanda', FinalizarDemandaViewSet, basename='finalizar_demanda')
 router.register(r'registro', UserViewSet, basename='registro')
 
 urlpatterns = [
