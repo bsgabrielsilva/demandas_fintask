@@ -34,6 +34,7 @@ class DemandaStatusUpdateSerializer(BaseDemandasSerializer):
         self.fields.pop('email')
         self.fields.pop('telefone')
         self.fields.pop('celular')
+        self.fields.pop('anunciante')
 
 
 class DemandasCreateUpdateSerializer(BaseDemandasSerializer):
