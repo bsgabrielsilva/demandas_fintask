@@ -10,10 +10,16 @@ from ...models import Demandas
 
 
 class BaseDemandasSerializer(serializers.ModelSerializer):
+    anunciante = serializers.SerializerMethodField()
+
     class Meta:
         model = Demandas
         fields = ('id', 'descricao', 'status', 'logradouro', 'complemento', 'bairro', 'cep', 'cidade',
-                  'email', 'telefone', 'celular')
+                  'email', 'telefone', 'celular', 'anunciante')
+        read_only_fields = ('anunciante', )
+
+    def get_anunciante(self, obj):
+        return {'username': obj.user.username}
 
 
 class DemandaStatusUpdateSerializer(BaseDemandasSerializer):

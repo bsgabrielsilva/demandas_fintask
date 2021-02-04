@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"bsgabrielsilva2\",\r\n    \"email\": \"bsgabrielsilva@outlook.com\",\r\n    \"password\": \"123Mudar\"\r\n}",
+					"raw": "{\r\n    \"username\": \"bsgabrielsilva3\",\r\n    \"email\": \"bsgabrielsilva@outlook.com\",\r\n    \"password\": \"123Mudar\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -42,7 +42,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"bsgabrielsilva2\",\r\n    \"password\": \"123Mudar\"\r\n}",
+					"raw": "{\r\n    \"username\": \"bsgabrielsilva3\",\r\n    \"password\": \"123Mudar\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -72,12 +72,12 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token 9cc79ff19a8850b9eb93753ba5414c1d028f9cc9",
+						"value": "Token edc79059535ea5187912af073aaa98bbc24f5757",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8000/api/cidades/?cidade=Macapá",
+					"raw": "http://localhost:8000/api/cidades/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -87,12 +87,6 @@
 						"api",
 						"cidades",
 						""
-					],
-					"query": [
-						{
-							"key": "cidade",
-							"value": "Macapá"
-						}
 					]
 				}
 			},
@@ -105,13 +99,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token 9cc79ff19a8850b9eb93753ba5414c1d028f9cc9",
+						"value": "Token edc79059535ea5187912af073aaa98bbc24f5757",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"descricao\": \"Peça do Câmbio Automático 2\",\r\n    \"logradouro\": \"Avenida dos Carros, Nº 1901\",\r\n    \"complemento\": \"Em frente a Ferrari\",\r\n    \"bairro\": \"Esportivos\",\r\n    \"cep\": \"00.000-001\",\r\n    \"cidade\": \"santana\",\r\n    \"email\": \"bsgabrielsilva@outlook.com\",\r\n    \"telefone\": \"(00) 0000-0001\",\r\n    \"celular\": \"(00) 0 0000-0001\"\r\n}",
+					"raw": "{\r\n    \"descricao\": \"Peça do Câmbio Manual 5\",\r\n    \"logradouro\": \"Avenida dos Motos, Nº 1121\",\r\n    \"complemento\": \"Em frente a Honda\",\r\n    \"bairro\": \"Escola Da vida\",\r\n    \"cep\": \"00.100-221\",\r\n    \"cidade\": \"macapa\",\r\n    \"email\": \"bsgabrielsilva@outlook.com\",\r\n    \"telefone\": \"(00) 3300-2201\",\r\n    \"celular\": \"(00) 0 3333-0001\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -141,12 +135,12 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token 9cc79ff19a8850b9eb93753ba5414c1d028f9cc9",
+						"value": "Token edc79059535ea5187912af073aaa98bbc24f5757",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8000/api/demandas",
+					"raw": "http://localhost:8000/api/demandas/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -154,7 +148,8 @@
 					"port": "8000",
 					"path": [
 						"api",
-						"demandas"
+						"demandas",
+						""
 					]
 				},
 				"description": "Você também pode pesquisar as demandas por cidade, passando o paramêtro **?cidade=**"
@@ -168,12 +163,12 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token 9cc79ff19a8850b9eb93753ba5414c1d028f9cc9",
+						"value": "Token edc79059535ea5187912af073aaa98bbc24f5757",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8000/api/demandas/2",
+					"raw": "http://localhost:8000/api/demandas/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -182,7 +177,7 @@
 					"path": [
 						"api",
 						"demandas",
-						"2"
+						"1"
 					]
 				}
 			},
@@ -195,7 +190,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token 9cc79ff19a8850b9eb93753ba5414c1d028f9cc9",
+						"value": "Token edc79059535ea5187912af073aaa98bbc24f5757",
 						"type": "text"
 					}
 				],
@@ -232,7 +227,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token 9cc79ff19a8850b9eb93753ba5414c1d028f9cc9",
+						"value": "Token edc79059535ea5187912af073aaa98bbc24f5757",
 						"type": "text"
 					}
 				],
@@ -246,6 +241,43 @@
 					"path": [
 						"api",
 						"demandas",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Finalizar uma demanda de peças",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token edc79059535ea5187912af073aaa98bbc24f5757",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"Finalizada\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/finalizar_demanda/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"finalizar_demanda",
 						"1",
 						""
 					]
