@@ -1,0 +1,10 @@
+endpoints:
+  - name: cidades
+    path: http://localhost:8000/api/
+    requests:
+      - name: list_all_cidades
+        path: cidades/
+        method: get
+        tests:
+          - name: status_code_is_200
+            assert: ${{ response.status_code == 200 }}

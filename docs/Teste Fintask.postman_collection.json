@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "441d8048-8a39-4fbb-9657-c6a3f94c5fbc",
+		"name": "Teste Fintask",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Criando uma conta de usuário",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"bsgabrielsilva2\",\r\n    \"email\": \"bsgabrielsilva@outlook.com\",\r\n    \"password\": \"123Mudar\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/registro/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"registro",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Realizar login com a conta criada anteriormente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"bsgabrielsilva2\",\r\n    \"password\": \"123Mudar\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/login/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca de cidades(para obter o slug) para o cadastro de Demandas de Peças",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 9cc79ff19a8850b9eb93753ba5414c1d028f9cc9",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/cidades/?cidade=Macapá",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"cidades",
+						""
+					],
+					"query": [
+						{
+							"key": "cidade",
+							"value": "Macapá"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastar uma demanda de peças",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 9cc79ff19a8850b9eb93753ba5414c1d028f9cc9",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"descricao\": \"Peça do Câmbio Automático 2\",\r\n    \"logradouro\": \"Avenida dos Carros, Nº 1901\",\r\n    \"complemento\": \"Em frente a Ferrari\",\r\n    \"bairro\": \"Esportivos\",\r\n    \"cep\": \"00.000-001\",\r\n    \"cidade\": \"santana\",\r\n    \"email\": \"bsgabrielsilva@outlook.com\",\r\n    \"telefone\": \"(00) 0000-0001\",\r\n    \"celular\": \"(00) 0 0000-0001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/demandas/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"demandas",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Carregar todas as demandas cadastradas pelo usuário autenticado",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 9cc79ff19a8850b9eb93753ba5414c1d028f9cc9",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/demandas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"demandas"
+					]
+				},
+				"description": "Você também pode pesquisar as demandas por cidade, passando o paramêtro **?cidade=**"
+			},
+			"response": []
+		},
+		{
+			"name": "Carregar uma demanda pelo id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 9cc79ff19a8850b9eb93753ba5414c1d028f9cc9",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/demandas/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"demandas",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar uma demanda de peças pelo id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 9cc79ff19a8850b9eb93753ba5414c1d028f9cc9",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"descricao\": \"Peça do Câmbio Automático 3\",\r\n    \"logradouro\": \"Avenida dos Carros, Nº 1900\",\r\n    \"complemento\": \"Em frente a Ferrari\",\r\n    \"bairro\": \"Esportivos\",\r\n    \"cep\": \"00.000-111\",\r\n    \"cidade\": \"santana\",\r\n    \"email\": \"bsgabrielsilva@outlook.com\",\r\n    \"telefone\": \"(00) 0000-0000\",\r\n    \"celular\": \"(00) 0 0000-0000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/demandas/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"demandas",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remover uma demanda de peças pelo id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 9cc79ff19a8850b9eb93753ba5414c1d028f9cc9",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/demandas/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"demandas",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -8,7 +8,6 @@ from ...models import Demandas
 
 class DemandasViewSet(viewsets.ModelViewSet):
     http_method_names = ['get', 'post', 'put', 'delete']
-
     authentication_classes = [TokenAuthentication, ]
     permission_classes = [IsAuthenticated, ]
 
