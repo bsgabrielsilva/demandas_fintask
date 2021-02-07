@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"usuario_teste\",\r\n    \"email\": \"usuario_teste@outlook.com\",\r\n    \"password\": \"123Mudar\"\r\n}",
+					"raw": "{\r\n    \"username\": \"usuario_teste3\",\r\n    \"email\": \"usuario_teste3@outlook.com\",\r\n    \"password\": \"123Mudar\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -67,7 +67,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"usuario_teste\",\r\n    \"password\": \"123Mudar\"\r\n}",
+					"raw": "{\r\n    \"username\": \"usuario_teste3\",\r\n    \"password\": \"123Mudar\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -97,7 +97,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token edc79059535ea5187912af073aaa98bbc24f5757",
+						"value": "{{demandas_token}}",
 						"type": "text"
 					}
 				],
