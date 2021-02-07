@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"bsgabrielsilva3\",\r\n    \"email\": \"bsgabrielsilva@outlook.com\",\r\n    \"password\": \"123Mudar\"\r\n}",
+					"raw": "{\r\n    \"username\": \"usuario_teste\",\r\n    \"email\": \"usuario_teste@outlook.com\",\r\n    \"password\": \"123Mudar\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -37,12 +37,37 @@
 		},
 		{
 			"name": "Realizar login com a conta criada anteriormente",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json()\r",
+							"if (pm.response.code == 200) {\r",
+							"    pm.collectionVariables.set(\"demandas_token\", `Token ${response.token}`);\r",
+							"    let token = pm.collectionVariables.get(\"demandas_token\");\r",
+							"    console.log(token)\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"bsgabrielsilva3\",\r\n    \"password\": \"123Mudar\"\r\n}",
+					"raw": "{\r\n    \"username\": \"usuario_teste\",\r\n    \"password\": \"123Mudar\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -94,12 +119,28 @@
 		},
 		{
 			"name": "Cadastar uma demanda de peças",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"if (pm.response.code === 201) {\r",
+							"    pm.collectionVariables.set(\"id\", response.id);\r",
+							"    console.log(response.id);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token edc79059535ea5187912af073aaa98bbc24f5757",
+						"value": "{{demandas_token}}",
 						"type": "text"
 					}
 				],
@@ -135,7 +176,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token edc79059535ea5187912af073aaa98bbc24f5757",
+						"value": "{{demandas_token}}",
 						"type": "text"
 					}
 				],
@@ -163,12 +204,12 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token edc79059535ea5187912af073aaa98bbc24f5757",
+						"value": "{{demandas_token}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8000/api/demandas/1",
+					"raw": "http://localhost:8000/api/demandas/{{id}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -177,7 +218,7 @@
 					"path": [
 						"api",
 						"demandas",
-						"1"
+						"{{id}}"
 					]
 				}
 			},
@@ -190,7 +231,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token edc79059535ea5187912af073aaa98bbc24f5757",
+						"value": "{{demandas_token}}",
 						"type": "text"
 					}
 				],
@@ -204,7 +245,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/demandas/1/",
+					"raw": "http://localhost:8000/api/demandas/{{id}}/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -213,35 +254,7 @@
 					"path": [
 						"api",
 						"demandas",
-						"1",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Remover uma demanda de peças pelo id",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Token edc79059535ea5187912af073aaa98bbc24f5757",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8000/api/demandas/1/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"demandas",
-						"1",
+						"{{id}}",
 						""
 					]
 				}
@@ -255,7 +268,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Token edc79059535ea5187912af073aaa98bbc24f5757",
+						"value": "{{demandas_token}}",
 						"type": "text"
 					}
 				],
@@ -269,7 +282,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/finalizar_demanda/1/",
+					"raw": "http://localhost:8000/api/finalizar_demanda/{{id}}/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -278,12 +291,70 @@
 					"path": [
 						"api",
 						"finalizar_demanda",
-						"1",
+						"{{id}}",
 						""
 					]
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Remover uma demanda de peças pelo id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{demandas_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/demandas/{{id}}/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"demandas",
+						"{{id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "demandas_token",
+			"value": "''"
+		},
+		{
+			"key": "id",
+			"value": "1"
 		}
 	]
 }

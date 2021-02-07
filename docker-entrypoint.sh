@@ -14,6 +14,9 @@ python manage.py loaddata cidades.json
 echo "Apply loaddata user"
 python manage.py loaddata user.json
 
+echo "Apply api tests"
+python manage.py test
+
 # apply collectstatic files
 echo "Apply collectstatic --no-input"
 python manage.py collectstatic --no-input
