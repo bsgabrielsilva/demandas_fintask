@@ -73,10 +73,21 @@ A autenticação e o token gerados para o usuário, são usando a biblioteca **a
 Os demais endpoints são:
 
 - **/api/cidades/ [GET]** => Trazer todas as cidades, com opção de pesquisa **?cidade=** para uma cidade em específico, utilizando o filtro do django ORM **icontains** para realizar a busca 
-- **/api/demandas/ [POST][GET] [PUT][DELETE]** => Cadastro, Edição, Listagem(de todas ou por Id) e remoção de demandas. É importante enfatizar que todo o processo, corresponde a filtragem de demandas pelo usuário que a criou, então, não se tornando possível listar, alterar ou remover as demandas de outro usuário, a não ser, o do próprio criador da demanda. 
+- **/api/demandas/ [POST][GET] [PUT][DELETE]** => Cadastro, Edição, Listagem(de todas ou por Id) e remoção de demandas. É importante enfatizar que todo o processo, corresponde a filtragem de demandas pelo usuário que a criou, então, não se tornando possível listar, alterar ou remover as demandas de outro usuário, a não ser, o do próprio criador da demanda. Outro ponto interessante, é que você pode filtrar a demanda por cidade, usando a query **?cidade=**, que ele aplicará o filtro do **icontains** do django e retornará as demandas por cidade.
 - **/api/finalizar_demanda/{id} [PUT]** => Finalizar a demanda. Somente o usuário que a criou, pode finalizá-la. O endpoint, só aceitará o status **Finalizada**. Caso a demanda já esteja finalizada, ele retornará **Demanda já finalizada!**. 
 
 Os body's de cada endpoint, está disponível na collection do postman na pasta **/docs** do projeto.
+
+### Considerações sobre a ACL
+Uma curiosidade bem legal do django rest framework que poucos conhecem, é que quando você utiliza o ModelViewSet para confeccionar seu endpoint, e o seu Model tem uma referência de foreingKey, e você aplica um filtro para exibição e cadastro, focando nessa foreingKey, ele só realizará se a chave for correspondente ao filtro. Um exemplo muito prático, é quando você tem um relacionamento foreignKey com User, quando a view é autenticada por token, por exemplo, você consegue aplicar uma acl, filtrando dessa forma: 
+
+**Trecho 1**
+```
+def get_queryset(self):
+    return Demandas.objects.filter(user=self.request.user)
+```
+
+O queryset é sobreescrito, usando **self.request.user**, você captura o usuário autenticado(por token) e somente exibe os dados que tem relação com ele. Mas isso não tem nada de diferente do que um filtro aplicado, não é? Correto. Mas o X da questão, está quando você tenta editar[PUT], listar um dado por id[GET] e remover[DELETE], se o objeto/instância, não tiver nenhum tipo de relação com o usuário autenticado, o solicitante não conseguirá alterar, visualizar ou remover nada, a não ser que ele tenha relação com a instancia. Para esclarecimento, se o usuário X tem relação com o objeto/instância de id 1, e o usuário Y tem com o objeto/instância de id 2, o usuário X não conseguirá acessar, editar ou remover o objeto/instância de id 2, se o **Trecho 1** existir no ModelViewSet do model da instância em questão. Caso não tenha ficado claro, podemos trocar uma ideia depois, sem problemas, ou podes realizar o teste na collection do postman que está em **/docs**
 
 ## Considerações
 
